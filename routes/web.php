@@ -2,7 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/planets', function () {
+    if (request('name')) {
+        echo "Planeet " . request('name');
+    }
+
     $data = ["Uranus", "Jupiter", "Mars", "Aarde", "Saturnus", "Pluto", "Neptunus", "Venus"];
 
     $planets = [
@@ -16,7 +20,7 @@ Route::get('/', function () {
         ],
         [
             'name' => 'Earth',
-            'description' => 'Our home planet is the third planet from the Sun, and the only place we know of so far thats inhabited by living things.'
+            'description' => 'Our home planet is the third planet from the Sun, and the only place we know of so far that\'s inhabited by living things.'
         ],
         [
             'name' => 'Jupiter',
@@ -24,5 +28,9 @@ Route::get('/', function () {
         ],
     ];
 
-    return view('planets', compact('data', 'planets'));
+    // stuur variabelen naar de Blade-view
+    return view('planets', [
+        'data' => $data,
+        'planets' => $planets,
+    ]);
 });
