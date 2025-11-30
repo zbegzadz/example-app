@@ -2,10 +2,10 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>{{ $planet['name'] }}</title>
+    <title>{{ $planet['name'] ?? $dbPlanet->name }}</title>
 </head>
 <body>
-    <h1>{{ $planet['name'] }}</h1>
-    <p>{{ $planet['description'] }}</p>
+    <h1>{{ $planet['name'] ?? $dbPlanet->name }}</h1>
+    <p>{{ $planet['description'] ?? $dbPlanet->description }}</p>
 </body>
 </html>

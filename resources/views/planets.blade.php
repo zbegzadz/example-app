@@ -11,14 +11,20 @@
         @endforeach
     </ul>
 
-    <h2>Planet Details</h2>
+    <h2>Planet Details (Array)</h2>
     @foreach($planets as $planet)
         <div style="margin-bottom: 20px;">
             <h3>{{ $planet['name'] }}</h3>
             <p>{{ $planet['description'] }}</p>
         </div>
     @endforeach
+
+    <h2>Planet Details (Database)</h2>
+    @foreach($dbPlanets as $planet)
+        <div style="margin-bottom: 20px;">
+            <h3>{{ $planet->name }}</h3>
+            <p>{{ $planet->description }}</p>
+        </div>
+    @endforeach
 </body>
 </html>
-
-

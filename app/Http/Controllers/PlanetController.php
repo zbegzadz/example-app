@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PlanetController extends Controller
 {
@@ -29,9 +30,13 @@ class PlanetController extends Controller
             ],
         ];
 
+    
+        $dbPlanets = DB::table('planets')->get();
+
         return view('planets', [
             'data' => $data,
             'planets' => $planets,
+            'dbPlanets' => $dbPlanets, 
         ]);
     }
 
@@ -58,8 +63,14 @@ class PlanetController extends Controller
 
         $key = strtolower($planet);
 
+   
+        $dbPlanet = DB::table('planets')
+            ->whereRaw('LOWER(name) = ?', [strtolower($planet)])
+            ->first();
+
         return view('show', [
             'planet' => $planets[$key] ?? null,
+            'dbPlanet' => $dbPlanet, 
         ]);
     }
 }
