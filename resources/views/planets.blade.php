@@ -6,21 +6,15 @@
 <body>
     <h1>Planet List</h1>
     <ul>
-        @foreach($data as $planet)
-            <li>{{ $planet }}</li>
+        @foreach($planets as $planet)
+            <li>{{ $planet->name }}</li>
         @endforeach
     </ul>
 
     <h2>Planet Details (Array)</h2>
-    @foreach($planets as $planet)
-        <div style="margin-bottom: 20px;">
-            <h3>{{ $planet['name'] }}</h3>
-            <p>{{ $planet['description'] }}</p>
-        </div>
-    @endforeach
 
     <h2>Planet Details (Database)</h2>
-    @foreach($dbPlanets as $planet)
+    @foreach($planets as $planet)
         <div style="margin-bottom: 20px;">
             <h3>{{ $planet->name }}</h3>
             <p>{{ $planet->description }}</p>
