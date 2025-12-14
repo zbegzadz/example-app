@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Planet extends Model
+class SolarSystem extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = ['name'];
 
-    public function solarSystem()
+    public function planets()
     {
-        return $this->belongsTo(SolarSystem::class);
+        return $this->hasMany(Planet::class);
     }
 }
